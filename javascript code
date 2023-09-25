@@ -1,0 +1,25 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const convertBtn = document.getElementById("convertBtn");
+
+    convertBtn.addEventListener("click", function () {
+        const fromScale = document.getElementById("fromScale").value;
+        const toScale = document.getElementById("toScale").value;
+        const temperature = parseFloat(document.getElementById("temperature").value);
+
+        let convertedTemperature;
+
+        if (fromScale === "celsius" && toScale === "fahrenheit") {
+            convertedTemperature = (temperature * 9/5) + 32;
+        } else if (fromScale === "fahrenheit" && toScale === "celsius") {
+            convertedTemperature = (temperature - 32) * 5/9;
+        } else {
+            // Handle other conversions as needed
+        }
+
+        if (!isNaN(convertedTemperature)) {
+            document.getElementById("result").textContent = `Converted temperature: ${convertedTemperature.toFixed(2)} ${toScale}`;
+        } else {
+            document.getElementById("result").textContent = "Invalid input. Please try again.";
+        }
+    });
+});
